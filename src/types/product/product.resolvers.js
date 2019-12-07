@@ -52,7 +52,9 @@ export default {
     removeProduct
   },
   Product: {
-    __resolveType(product) {},
+    __resolveType(product) {
+      return productsTypeMatcher[product.type]
+    },
     createdBy(product) {
       return User.findById(product.createdBy)
         .lean()
